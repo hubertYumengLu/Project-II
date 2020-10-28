@@ -19,6 +19,8 @@ function draw() {
   part5()
   part6()
 }
+
+// draw the yellow thing
 function part1(){
   let brightness1 = 20
   fill(20, 100, brightness1)
