@@ -18,6 +18,7 @@ function draw() {
   part4()
   part5()
   part6()
+  //TEST
 }
 function part1(){
   let brightness1 = 20
