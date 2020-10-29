@@ -16,6 +16,7 @@ function draw() {
   part4()
   part5()
   part6()
+  brightness[0] = 1000
 }
 
 function part1(){
