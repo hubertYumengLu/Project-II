@@ -1,32 +1,25 @@
-// Code in this function is run once, when the sketch is started.
+let brightness = [200, 200, 200, 200, 200, 200]
 function setup() {
   createCanvas(600, 400);
-  colorMode(HSB, 100)
+  colorMode(HSB, 1000)
 }
 
-//Testing collaboration factor here...
-
-// Code in this function is run once per frame. If it draws the same thing each
-// time, the sketch is a static image. If it draws something different on
-// different frames, the sketch is an animation.
 function draw() {
-  background(80,100,30);
+  background(800,1000,300);
   noStroke()
   fill('white')
   rect(50, 20, 500,20)
+  playPauseButton()
   part1()
   part2()
   part3()
   part4()
   part5()
   part6()
-  //TEST
 }
 
-// draw the yellow thing
 function part1(){
-  let brightness1 = 20
-  fill(20, 100, brightness1)
+  fill(200, 1000, brightness[0])
   for (let i = 0; i <= 4; i++){
   circle(width * 1 / 9 + 30 *i, height * 2/3 + 20 * i, 30)
   }
@@ -36,8 +29,7 @@ function part1(){
 }
 
 function part2(){
-  let brightness2 = 20
-  fill(40, 100, brightness2)
+  fill(400, 1000, brightness[1])
   for (let i = 0; i <= 4; i++){
   circle(width * 5 / 14 + 10 *i, height * 1/2 + 30 * i, 30)
   }
@@ -47,8 +39,7 @@ function part2(){
 }
 
 function part3(){
-  let brightness3 = 20
-  fill(60, 100, brightness3)
+  fill(600, 1000, brightness[2])
   for (let i = 0; i <= 4; i++){
   circle(width * 9 / 14 - 10 * i, height * 1/2 + 30 * i, 30)
   }
@@ -58,8 +49,7 @@ function part3(){
 }
 
 function part4(){
-  let brightness4 = 20
-  fill(5, 100, brightness4)
+  fill(50, 1000, brightness[3])
   for (let i = 0; i <= 4; i++){
   circle(width * 8 / 9 - 30 *i, height * 2/3 + 20 * i, 30)
   }
@@ -69,17 +59,22 @@ function part4(){
 }
 
 function part5(){
-  let brightness5 = 20
-  fill(0, 0, brightness5)
+  fill(0, 0, brightness[4])
   for (let i = 0; i <= 15; i++){
   circle(50 + 33.33 * i, 150, 30)
   }
 }
 
 function part6(){
-  let brightness6 = 20
-  fill(12, 100, brightness6)
+  fill(120, 1000, brightness[5])
   for (let i = 0; i <= 15; i++){
   circle(50 + 33.33 * i, 100, 30)
   }
+}
+
+function playPauseButton(){
+  fill(0,0,1000)
+  rect(275,350,50,30)
+  fill(120,1000,1000)
+  triangle(285,355,285,375,315,365)
 }
