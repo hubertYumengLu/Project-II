@@ -1,12 +1,9 @@
-// Code in this function is run once, when the sketch is started.
+let brightness = [20, 20, 20, 20, 20, 20]
 function setup() {
   createCanvas(600, 400);
   colorMode(HSB, 100)
 }
 
-// Code in this function is run once per frame. If it draws the same thing each
-// time, the sketch is a static image. If it draws something different on
-// different frames, the sketch is an animation.
 function draw() {
   background(80,100,30);
   noStroke()
@@ -18,13 +15,10 @@ function draw() {
   part4()
   part5()
   part6()
-  //TEST
 }
 
-// draw the yellow thing
 function part1(){
-  let brightness1 = 20
-  fill(20, 100, brightness1)
+  fill(20, 100, brightness[0])
   for (let i = 0; i <= 4; i++){
   circle(width * 1 / 9 + 30 *i, height * 2/3 + 20 * i, 30)
   }
@@ -34,8 +28,7 @@ function part1(){
 }
 
 function part2(){
-  let brightness2 = 20
-  fill(40, 100, brightness2)
+  fill(40, 100, brightness[1])
   for (let i = 0; i <= 4; i++){
   circle(width * 5 / 14 + 10 *i, height * 1/2 + 30 * i, 30)
   }
@@ -45,8 +38,7 @@ function part2(){
 }
 
 function part3(){
-  let brightness3 = 20
-  fill(60, 100, brightness3)
+  fill(60, 100, brightness[2])
   for (let i = 0; i <= 4; i++){
   circle(width * 9 / 14 - 10 * i, height * 1/2 + 30 * i, 30)
   }
@@ -56,8 +48,7 @@ function part3(){
 }
 
 function part4(){
-  let brightness4 = 20
-  fill(5, 100, brightness4)
+  fill(5, 100, brightness[3])
   for (let i = 0; i <= 4; i++){
   circle(width * 8 / 9 - 30 *i, height * 2/3 + 20 * i, 30)
   }
@@ -67,16 +58,14 @@ function part4(){
 }
 
 function part5(){
-  let brightness5 = 20
-  fill(0, 0, brightness5)
+  fill(0, 0, brightness[4])
   for (let i = 0; i <= 15; i++){
   circle(50 + 33.33 * i, 150, 30)
   }
 }
 
 function part6(){
-  let brightness6 = 20
-  fill(12, 100, brightness6)
+  fill(12, 100, brightness[5])
   for (let i = 0; i <= 15; i++){
   circle(50 + 33.33 * i, 100, 30)
   }
