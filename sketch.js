@@ -1,11 +1,19 @@
-let brightness = [20, 20, 20, 20, 20, 20]
+let brightness = [200, 200, 200, 200, 200, 200]
 function setup() {
   createCanvas(600, 400);
-  colorMode(HSB, 100)
+  colorMode(HSB, 1000)
 }
 
+//<<<<<<< HEAD
+//=======
+//Testing collaboration factor here...
+
+// Code in this function is run once per frame. If it draws the same thing each
+// time, the sketch is a static image. If it draws something different on
+// different frames, the sketch is an animation.
+//>>>>>>> c08618690953846661eb46bd6c6999045935e24b
 function draw() {
-  background(80,100,30);
+  background(800,1000,300);
   noStroke()
   fill('white')
   rect(50, 20, 500,20)
@@ -19,7 +27,7 @@ function draw() {
 }
 
 function part1(){
-  fill(20, 100, brightness[0])
+  fill(200, 1000, brightness[0])
   for (let i = 0; i <= 4; i++){
   circle(width * 1 / 9 + 30 *i, height * 2/3 + 20 * i, 30)
   }
@@ -29,7 +37,7 @@ function part1(){
 }
 
 function part2(){
-  fill(40, 100, brightness[1])
+  fill(400, 1000, brightness[1])
   for (let i = 0; i <= 4; i++){
   circle(width * 5 / 14 + 10 *i, height * 1/2 + 30 * i, 30)
   }
@@ -39,7 +47,7 @@ function part2(){
 }
 
 function part3(){
-  fill(60, 100, brightness[2])
+  fill(600, 1000, brightness[2])
   for (let i = 0; i <= 4; i++){
   circle(width * 9 / 14 - 10 * i, height * 1/2 + 30 * i, 30)
   }
@@ -49,7 +57,7 @@ function part3(){
 }
 
 function part4(){
-  fill(5, 100, brightness[3])
+  fill(50, 1000, brightness[3])
   for (let i = 0; i <= 4; i++){
   circle(width * 8 / 9 - 30 *i, height * 2/3 + 20 * i, 30)
   }
@@ -66,15 +74,15 @@ function part5(){
 }
 
 function part6(){
-  fill(12, 100, brightness[5])
+  fill(120, 1000, brightness[5])
   for (let i = 0; i <= 15; i++){
   circle(50 + 33.33 * i, 100, 30)
   }
 }
 
 function playPauseButton(){
-  fill(0,0,100)
+  fill(0,0,1000)
   rect(275,350,50,30)
-  fill(12,100,100)
+  fill(120,1000,1000)
   triangle(285,355,285,375,315,365)
 }
