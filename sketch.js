@@ -4,14 +4,6 @@ function setup() {
   colorMode(HSB, 1000)
 }
 
-//<<<<<<< HEAD
-//=======
-//Testing collaboration factor here...
-
-// Code in this function is run once per frame. If it draws the same thing each
-// time, the sketch is a static image. If it draws something different on
-// different frames, the sketch is an animation.
-//>>>>>>> c08618690953846661eb46bd6c6999045935e24b
 function draw() {
   background(800,1000,300);
   noStroke()
