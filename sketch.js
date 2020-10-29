@@ -9,6 +9,7 @@ function draw() {
   noStroke()
   fill('white')
   rect(50, 20, 500,20)
+  playPauseButton()
   part1()
   part2()
   part3()
@@ -69,4 +70,11 @@ function part6(){
   for (let i = 0; i <= 15; i++){
   circle(50 + 33.33 * i, 100, 30)
   }
+}
+
+function playPauseButton(){
+  fill(0,0,100)
+  rect(275,350,50,30)
+  fill(12,100,100)
+  triangle(285,355,285,375,315,365)
 }
