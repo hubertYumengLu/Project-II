@@ -1,11 +1,12 @@
-let brightness = [200, 200, 200, 200, 200, 200]
-var vln1, vln2, vla, cb, wnd, harp
+let i = 1
+//judgment on whether to play or pause audio
+let brightness = [200, 200, 200, 200, 200, 200, 1000]
+//first six values are brightness of circles; last value is brightness of playPauseButton
+let vln1, vln2, vla, cb, wnd, harp
 let audio = []
-function setup() {
-  createCanvas(600, 400);
-  colorMode(HSB, 1000)
-  
+function preload(){
   vln1 = loadSound("Barcarole (Violin I).mp3")
+  console.info(vln1)
   audio.push(vln1)
   vln2 = loadSound("Barcarole (Violin II).mp3")
   audio.push(vln2)
@@ -13,10 +14,17 @@ function setup() {
   audio.push(vla)
   cb = loadSound("Barcarole (Cello & Bass).mp3")
   audio.push(cb)
-  ww = loadSound("Barcarole (Woodwinds).mp3")
+  wnd = loadSound("Barcarole (Woodwinds).mp3")
   audio.push(wnd)
   harp = loadSound("Barcarole (Harp & Triangle).mp3")
   audio.push(harp)
+}
+
+function setup() {
+  createCanvas(600, 400);
+  colorMode(HSB, 1000)
+  
+  
 }
 
 function draw() {
@@ -31,7 +39,6 @@ function draw() {
   part4()
   part5()
   part6()
-  vln1.play()
 }
 
 function part1(){
@@ -89,8 +96,32 @@ function part6(){
 }
 
 function playPauseButton(){
-  fill(0,0,1000)
+  fill(0,0,brightness[7])
   rect(275,350,50,30)
-  fill(120,1000,1000)
+  fill(120,1000,brightness[7])
   triangle(285,355,285,375,315,365)
+}
+
+function mousePressed(){
+  if (mouseX >= 275 && mouseX <= 325 && mouseY >= 350 && mouseY <= 380 && i == 1){
+    brightness[7] = 800
+    audio[0].play()
+    audio[1].play()
+    audio[2].play()
+    audio[3].play()
+    audio[4].play()
+    audio[5].play()
+    i = -1
+    console.info(i)
+  } else if (mouseX >= 275 && mouseX <= 325 && mouseY >= 350 && mouseY <= 380 && i == -1){
+    brightness[7] = 1000
+    audio[0].pause()
+    audio[1].pause()
+    audio[2].pause()
+    audio[3].pause()
+    audio[4].pause()
+    audio[5].pause()
+    i = 1
+    console.info(i)
+  }
 }
