@@ -1,7 +1,22 @@
 let brightness = [200, 200, 200, 200, 200, 200]
+var vln1, vln2, vla, cb, wnd, harp
+let audio = []
 function setup() {
   createCanvas(600, 400);
   colorMode(HSB, 1000)
+  
+  vln1 = loadSound("Barcarole (Violin I).mp3")
+  audio.push(vln1)
+  vln2 = loadSound("Barcarole (Violin II).mp3")
+  audio.push(vln2)
+  vla = loadSound("Barcarole (Viola).mp3")
+  audio.push(vla)
+  cb = loadSound("Barcarole (Cello & Bass).mp3")
+  audio.push(cb)
+  ww = loadSound("Barcarole (Woodwinds).mp3")
+  audio.push(wnd)
+  harp = loadSound("Barcarole (Harp & Triangle).mp3")
+  audio.push(harp)
 }
 
 function draw() {
@@ -16,7 +31,7 @@ function draw() {
   part4()
   part5()
   part6()
-
+  vln1.play()
 }
 
 function part1(){
