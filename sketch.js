@@ -105,12 +105,16 @@ function playPauseButton(){
 function mousePressed(){
   if (mouseX >= 275 && mouseX <= 325 && mouseY >= 350 && mouseY <= 380 && i == 1){
     brightness[7] = 800
-    audio[0].play()
-    audio[1].play()
-    audio[2].play()
-    audio[3].play()
-    audio[4].play()
-    audio[5].play()
+    // audio[0].play()
+    // audio[1].play()
+    // audio[2].play()
+    // audio[3].play()
+    // audio[4].play()
+    // audio[5].play()
+    for (audio of audio){
+    audio.play()
+    }
+    //How can we fix the latency issue?
     i = -1
     console.info(i)
   } else if (mouseX >= 275 && mouseX <= 325 && mouseY >= 350 && mouseY <= 380 && i == -1){
