@@ -16,6 +16,7 @@ function draw() {
   part4()
   part5()
   part6()
+
 }
 
 function part1(){
@@ -78,5 +79,3 @@ function playPauseButton(){
   fill(120,1000,1000)
   triangle(285,355,285,375,315,365)
 }
-
-//TEST
