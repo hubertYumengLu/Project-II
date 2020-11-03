@@ -9,6 +9,7 @@ Usage: Press and Hold mouse on canvas to play audio; move your mouse based on di
 Authors: Hubert Yumeng Lu, Jarah Romero
 
 Acknowledgements:
+ - P5.JS Library 
  - P5.JS Reference
  - Oliver Steele
  - Linda Laura Laszlo
