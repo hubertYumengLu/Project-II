@@ -1,4 +1,4 @@
-# Interactive Music director Game
+# Interactive Music Director Game
 
 Description: Become the conductor of Barcarole! In this demo game you can lead the musicians and their sound by simply waving your baton.  
 
