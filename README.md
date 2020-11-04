@@ -1,15 +1,18 @@
-# Interactive Music director Game
+# Interactive Music Director Game
 
-Description. Describe the importance of your project, and what it does. Include a screen shot.
+Description: Become the conductor of Barcarole! In this demo game you can lead the musicians and their sound by simply waving your baton.  
 
-Usage. Press the Play button to play audio; hover your mouse above each section of color to take control; use up/down keys on your keyboard to adjust volume. Enjoy your own direction!
+Usage: Press and Hold mouse on canvas to play audio; move your mouse based on directions listed to change the master volume and volume of each section. Become the conductor and wave your (mouse)baton!
 
 ![](https://github.com/hubertYumengLu/Project-II/blob/master/assets/images/Screenshot%202020-11-02%20at%2010.09.14.png?raw=true)
 
 Authors: Hubert Yumeng Lu, Jarah Romero
 
-Acknowledgements. Acknowledge the source of code and assets, any help you got, and work that inspired the project.
-
+Acknowledgements:
+ - P5.JS Library 
+ - P5.JS Reference
+ - Oliver Steele
+ - Linda Laura Laszlo
 
 ## License
 
