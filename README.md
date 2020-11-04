@@ -4,7 +4,7 @@ Description: Become the conductor of Barcarole! In this demo game you can lead t
 
 Usage: Press and Hold mouse on canvas to play audio; move your mouse based on directions listed to change the master volume and volume of each section. Become the conductor and wave your (mouse)baton!
 
-![](https://github.com/hubertYumengLu/Project-II/blob/master/assets/images/Screenshot%202020-11-02%20at%2010.09.14.png?raw=true)
+![](https://github.com/hubertYumengLu/Project-II/blob/master/assets/screenshots/Game.png)
 
 Authors: Hubert Yumeng Lu, Jarah Romero
 
