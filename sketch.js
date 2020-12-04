@@ -7,7 +7,7 @@ let audio = []
 let button;
 let sound1Gain, sound2Gain, sound3Gain, sound4Gain, sound5Gain, sound6Gain, masterGain;
 
-function preload(){
+function preload() {
   soundFormats("mp3")
   vln1 = loadSound("assets/sounds/Barcarole (Violin I).mp3")
   console.info(vln1)
@@ -25,10 +25,11 @@ function preload(){
 }
 
 function setup() {
-  let cnv = createCanvas(600, 400);
+  // Original Canvas Size for Reference (600,400)
+  let cnv = createCanvas(1280, 720);
   colorMode(HSB, 1000)
   cnv.mousePressed(startSound);
-  // Conjoining all Audio Files 
+  // Conjoining all Audio Files
   masterGain = new p5.Gain()
   masterGain.connect()
   audio[0].disconnect()
@@ -58,10 +59,10 @@ function setup() {
 }
 
 function draw() {
-  background(800,1000,330);
+  background(800, 1000, 330);
   noStroke()
   fill('white')
-  rect(50, 20, 500,20)
+  rect(width / 14, height / 20, width - 200, 20)
   playPauseButton()
   part1()
   part2()
@@ -69,20 +70,20 @@ function draw() {
   part4()
   part5()
   part6()
-  // Volume by Mouse Mechanics 
-  let sound1Volume = constrain(map(mouseX,width,0,0,1), 0, 1);
-  let sound2Volume = 1-sound1Volume;
+  // Volume by Mouse Mechanics
+  let sound1Volume = constrain(map(mouseX, width, 0, 0, 1), 0, 1);
+  let sound2Volume = 1 - sound1Volume;
   sound1Gain.amp(sound1Volume);
   sound2Gain.amp(sound1Volume);
   sound3Gain.amp(sound2Volume);
   sound4Gain.amp(sound2Volume);
-  let masterVolume = constrain(map(mouseY,height,0,0,1), 0, 1);
+  let masterVolume = constrain(map(mouseY, height, 0, 0, 1), 0, 1);
   masterGain.amp(masterVolume);
   // UI Text based on Mouse Mechanics
   fill(0, 0, 1000)
-  text('◄◄◄ Vln1&2 Vol ♫', width/2 - 32, height - 15)
-  text('Viola C&B Vol ♫ ►►►', width/2 + 160, height - 15)
-  text('Master Volume ♫ ↕', width/2 - 190, height - 15)
+  text('◄◄◄ Vln1&2 Vol ♫', width / 2 - 232, height - 15)
+  text('Viola C&B Vol ♫ ►►►', width / 2 + 360, height - 15)
+  text('Master Volume ♫ ↕', width / 2 - 390, height - 15)
   textAlign(LEFT);
   fill(850, 1000, 1000)
   text('M-Vol', 2, height - masterVolume * height * 0.9)
@@ -97,65 +98,64 @@ function draw() {
   text('C&B', width - 5, height - sound2Volume * height * 0.9);
 }
 
-function part1(){
-  fill(200, 1000, 800 - mouseX - mouseY)
-  for (let i = 0; i <= 4; i++){
-  circle(width * 1 / 9 + 30 *i, height * 2/3 + 20 * i, 30)
+function part1() {
+  fill(200, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 1 / 9 + 30 * i, height * 2 / 3 + 20 * i, 30)
   }
-  for (let i = 0; i <= 4; i++){
-    circle(width * 2 / 9 + 20 *i, height * 4/7 + 25 * i, 30)
-  }
-}
-
-function part2(){
-  fill(400, 1000, 800 - mouseX - mouseY)
-  for (let i = 0; i <= 4; i++){
-  circle(width * 5 / 14 + 10 *i, height * 1/2 + 30 * i, 30)
-  }
-  for (let i = 0; i <= 4; i++){
-    circle(width * 5 / 11 +  3 * i, height * 48/100 + 30 * i, 30)
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 2 / 9 + 20 * i, height * 4 / 7 + 25 * i, 30)
   }
 }
 
-function part3(){
-  fill(600, 1000, mouseX + brightness[2] - mouseY)
-  for (let i = 0; i <= 4; i++){
-  circle(width * 9 / 14 - 10 * i, height * 1/2 + 30 * i, 30)
+function part2() {
+  fill(400, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 5 / 14 + 10 * i, height * 1 / 2 + 30 * i, 30)
   }
-  for (let i = 0; i <= 4; i++){
-    circle(width * 6 / 11 -  3 * i, height * 48/100 + 30 * i, 30)
-  }
-}
-
-function part4(){
-  fill(50, 1000, mouseX + brightness[3] - mouseY)
-  for (let i = 0; i <= 4; i++){
-  circle(width * 8 / 9 - 30 *i, height * 2/3 + 20 * i, 30)
-  }
-  for (let i = 0; i <= 4; i++){
-    circle(width * 7 / 9 - 20 *i, height * 4/7 + 25 * i, 30)
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 5 / 11 + 3 * i, height * 48 / 100 + 30 * i, 30)
   }
 }
 
-function part5(){
-  fill(0, 0, 600 - mouseY)
-  for (let i = 0; i <= 15; i++){
-  circle(50 + 33.33 * i, 150, 30)
+function part3() {
+  fill(600, 1000, (mouseX / 2.133) + brightness[2] - (mouseY / 1.8))
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 9 / 14 - 10 * i, height * 1 / 2 + 30 * i, 30)
+  }
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 6 / 11 - 3 * i, height * 48 / 100 + 30 * i, 30)
   }
 }
 
-function part6(){
-  fill(120, 1000, 600 - mouseY)
-  for (let i = 0; i <= 15; i++){
-  circle(50 + 33.33 * i, 100, 30)
+function part4() {
+  fill(50, 1000, (mouseX / 2.133) + brightness[3] - (mouseY / 1.8))
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 8 / 9 - 30 * i, height * 2 / 3 + 20 * i, 30)
+  }
+  for (let i = 0; i <= 4; i++) {
+    circle(width * 7 / 9 - 20 * i, height * 4 / 7 + 25 * i, 30)
   }
 }
 
-function playPauseButton(){
-  fill(0,0,brightness[7])
-  rect(275,350,50,30)
-  fill(120,1000,brightness[7])
-  triangle(285,355,285,375,315,365)
+function part5() {
+  fill(0, 0, 600 - (mouseY / 1.8))
+  for (let i = 0; i <= 15; i++) {
+    circle(40 + width / 14 + 33.33 * i * 2, height / 7, 30)
+  }
+}
+
+function part6() {
+  fill(120, 1000, 600 - (mouseY / 1.8))
+  for (let i = 0; i <= 15; i++) {
+    circle(40 + width / 14 + 33.33 * i * 2, height / 3.8, 30)
+  }
+}
+
+function playPauseButton() {
+  fill(0, 0, brightness[7])
+  rect(450, 530, 380, 150)
+  fill(120, 1000, brightness[7])
 }
 
 // Sound Calls (Start and Stop)
