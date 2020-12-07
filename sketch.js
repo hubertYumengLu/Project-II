@@ -142,13 +142,15 @@ function part5() {
   fill(0, 0, 600 - (mouseY / 1.8))
   for (let i = 0; i <= 15; i++) {
     circle(40 + width / 14 + 33.33 * i * 2, height / 7, 30)
+    circle(40 + width / 14 + 33.33 * i * 2, (height / 7) + 33.33, 30)
   }
 }
 
 function part6() {
   fill(120, 1000, 600 - (mouseY / 1.8))
   for (let i = 0; i <= 15; i++) {
-    circle(40 + width / 14 + 33.33 * i * 2, height / 3.8, 30)
+    circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5), 30)
+    circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5) + 33.33, 30)
   }
 }
 
