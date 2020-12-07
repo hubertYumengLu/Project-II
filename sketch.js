@@ -8,7 +8,7 @@ let button;
 // let sound1Gain, sound2Gain, sound3Gain, sound4Gain, sound5Gain, sound6Gain, masterGain;
 let tutorial = []
 let parts, instruction
-let handMovement = loadImage("assets/images/handMovement.gif")
+let gif = loadImage("assets/images/handMovement.gif")
 
 
 function preload() {
@@ -60,38 +60,41 @@ function draw() {
   tutorial.push(instruction.text[3])
   pop()
 
+  let scale = 400 / gif.width
+  image(gif, 440, 330, gif.width * scale, gif.height * scale)
+
   //load interface if mouse pressed on canvas
   // Original Canvas Size for Reference (600,400)
   let cnv = createCanvas(1280, 720);
   colorMode(HSB, 1000)
   cnv.mousePressed(startSound);
   // Conjoining all Audio Files (No need any longer -- Hubert)
-  masterGain = new p5.Gain()
-  masterGain.connect()
-  audio[0].disconnect()
-  sound1Gain = new p5.Gain()
-  sound1Gain.setInput(audio[0])
-  sound1Gain.connect(masterGain)
-  audio[1].disconnect()
-  sound2Gain = new p5.Gain()
-  sound2Gain.setInput(audio[1])
-  sound2Gain.connect(masterGain)
-  audio[2].disconnect()
-  sound3Gain = new p5.Gain()
-  sound3Gain.setInput(audio[2])
-  sound3Gain.connect(masterGain)
-  audio[3].disconnect()
-  sound4Gain = new p5.Gain()
-  sound4Gain.setInput(audio[3])
-  sound4Gain.connect(masterGain)
-  audio[4].disconnect()
-  sound5Gain = new p5.Gain()
-  sound5Gain.setInput(audio[4])
-  sound5Gain.connect(masterGain)
-  audio[5].disconnect()
-  sound6Gain = new p5.Gain()
-  sound6Gain.setInput(audio[5])
-  sound6Gain.connect(masterGain)
+  // masterGain = new p5.Gain()
+  // masterGain.connect()
+  // audio[0].disconnect()
+  // sound1Gain = new p5.Gain()
+  // sound1Gain.setInput(audio[0])
+  // sound1Gain.connect(masterGain)
+  // audio[1].disconnect()
+  // sound2Gain = new p5.Gain()
+  // sound2Gain.setInput(audio[1])
+  // sound2Gain.connect(masterGain)
+  // audio[2].disconnect()
+  // sound3Gain = new p5.Gain()
+  // sound3Gain.setInput(audio[2])
+  // sound3Gain.connect(masterGain)
+  // audio[3].disconnect()
+  // sound4Gain = new p5.Gain()
+  // sound4Gain.setInput(audio[3])
+  // sound4Gain.connect(masterGain)
+  // audio[4].disconnect()
+  // sound5Gain = new p5.Gain()
+  // sound5Gain.setInput(audio[4])
+  // sound5Gain.connect(masterGain)
+  // audio[5].disconnect()
+  // sound6Gain = new p5.Gain()
+  // sound6Gain.setInput(audio[5])
+  // sound6Gain.connect(masterGain)
 }
 
 // function draw() {
