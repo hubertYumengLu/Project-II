@@ -2,18 +2,19 @@ let i = 1
 //judgment on whether to play or pause audio
 let brightness = [200, 200, 200, 200, 200, 200, 1000]
 //first six values are brightness of circles; last value is brightness of playPauseButton
+let tt = []
 let audio = []
 let music
 let button;
 // let sound1Gain, sound2Gain, sound3Gain, sound4Gain, sound5Gain, sound6Gain, masterGain;
-let tutorial = []
-let parts, instruction
-let gif = loadImage("assets/images/handMovement.gif")
-
+let cnv
+let parts
+let instruction
+let gif
 
 function preload() {
-  parts = loadJSON("parts.json")
-  instruction = loadJSON("tutorial.json")
+  instruction = loadJSON("assets/jsons/tutorial.json")
+  gif = loadImage("assets/images/handMovement.gif")
   soundFormats("mp3")
   music = loadSound("assets/sounds/Guillaume Tell.mp3")
   console.info(music)
@@ -21,35 +22,36 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(1200, 720);
+  cnv = createCanvas(1200, 720);
   colorMode(HSB, 1000)
   // cnv.mousePressed(startSound);
 }
 
 function draw() {
   background(800,1000,330);
+  
   // load tutorial
   rect(instruction.window[0].x, instruction.window[0].y, instruction.window[0].w, instruction.window[0].h)
-  tutorial.push(instruction.window)
+  tt.push(instruction.window)
   push()
   textSize(instruction.text[0].size)
   fill(instruction.text[0].color)
   text(instruction.text[0].text, instruction.text[0].x, instruction.text[0].y)
-  tutorial.push(instruction.text[0])
+  tt.push(instruction.text[0])
   pop()
   
   push()
   textSize(instruction.text[1].size)
   fill(instruction.text[1].color)
   text(instruction.text[1].text, instruction.text[1].x, instruction.text[1].y)
-  tutorial.push(instruction.text[1])
+  tt.push(instruction.text[1])
   pop()
   
   push()
   textSize(instruction.text[2].size)
   fill(instruction.text[2].color)
   text(instruction.text[2].text, instruction.text[2].x, instruction.text[2].y)
-  tutorial.push(instruction.text[2])
+  tt.push(instruction.text[2])
   pop()
   
   push()
@@ -57,18 +59,18 @@ function draw() {
   textStyle(ITALIC)
   fill(instruction.text[3].color)
   text(instruction.text[3].text, instruction.text[3].x, instruction.text[3].y)
-  tutorial.push(instruction.text[3])
+  tt.push(instruction.text[3])
   pop()
 
-  let scale = 400 / gif.width
-  image(gif, 440, 330, gif.width * scale, gif.height * scale)
+  let scale = 325 / gif.width
+  image(gif, 480, 330, gif.width * scale, gif.height * scale)
 
   //load interface if mouse pressed on canvas
   // Original Canvas Size for Reference (600,400)
-  let cnv = createCanvas(1280, 720);
+  
   colorMode(HSB, 1000)
-  cnv.mousePressed(startSound);
-  // Conjoining all Audio Files (No need any longer -- Hubert)
+  cnv.mousePressed(start);
+  // Conjoining all Audio Files (No need any longer? -- Hubert)
   // masterGain = new p5.Gain()
   // masterGain.connect()
   // audio[0].disconnect()
@@ -97,46 +99,29 @@ function draw() {
   // sound6Gain.connect(masterGain)
 }
 
-// function draw() {
-//   background(800, 1000, 330);
-//   noStroke()
-//   fill('white')
-//   rect(width / 14, height / 20, width - 200, 20)
-//   playPauseButton()
-//   part1()
-//   part2()
-//   part3()
-//   part4()
-//   part5()
-//   part6()
-//   // Volume by Mouse Mechanics
-//   let sound1Volume = constrain(map(mouseX, width, 0, 0, 1), 0, 1);
-//   let sound2Volume = 1 - sound1Volume;
-//   sound1Gain.amp(sound1Volume);
-//   sound2Gain.amp(sound1Volume);
-//   sound3Gain.amp(sound2Volume);
-//   sound4Gain.amp(sound2Volume);
-//   let masterVolume = constrain(map(mouseY, height, 0, 0, 1), 0, 1);
-//   masterGain.amp(masterVolume);
+function start() {
+  // createCanvas(1200, 720)
+  background(800, 1000, 330);
+  noStroke()
+  fill('white')
+  rect(width / 14, height / 20, width - 200, 20)
+  playPauseButton()
+  part1()
+  part2()
+  part3()
+  part4()
+  part5()
+  part6()
+  // Volume by Mouse Mechanics
+  let sound1Volume = constrain(map(mouseX, width, 0, 0, 1), 0, 1);
+  // let sound2Volume = 1 - sound1Volume;
+  audio[0].amp(sound1Volume);
+  // sound2Gain.amp(sound1Volume);
+  // sound3Gain.amp(sound2Volume);
+  // sound4Gain.amp(sound2Volume);
+  // let masterVolume = constrain(map(mouseY, height, 0, 0, 1), 0, 1);
+  // masterGain.amp(masterVolume);
 
-//   // UI Text based on Mouse Mechanics
-//   fill(0, 0, 1000)
-//   text('◄◄◄ Vln1&2 Vol ♫', width / 2 - 232, height - 15)
-//   text('Viola C&B Vol ♫ ►►►', width / 2 + 360, height - 15)
-//   text('Master Volume ♫ ↕', width / 2 - 390, height - 15)
-//   textAlign(LEFT);
-//   fill(850, 1000, 1000)
-//   text('M-Vol', 2, height - masterVolume * height * 0.9)
-//   textAlign(RIGHT);
-//   fill(200, 1000, 800)
-//   text('Vln1', width - 5, height - 20 - sound1Volume * height * 0.9);
-//   fill(400, 1000, 800)
-//   text('Vln2', width - 5, height - sound1Volume * height * 0.9);
-//   fill(600, 1000, 800)
-//   text('Viola', width - 5, height - 20 - sound2Volume * height * 0.9);
-//   fill(50, 1000, 800)
-//   text('C&B', width - 5, height - sound2Volume * height * 0.9);
-// }
 
 function part1() {
   fill(200, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
@@ -219,4 +204,4 @@ function playPauseButton() {
 //   audio[5].pause();
 // }
 
-
+}
