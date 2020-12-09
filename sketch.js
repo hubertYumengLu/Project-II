@@ -23,7 +23,7 @@ function preload() {
 }
 
 function setup() {
-  cnv = createCanvas(1200, 720);
+  createCanvas(1200, 720);
   colorMode(HSB, 1000)
   // cnv.mousePressed(startSound);
 }
@@ -79,21 +79,21 @@ function tutorial(){
   text(instruction.text[0].text, instruction.text[0].x, instruction.text[0].y)
   tt.push(instruction.text[0])
   pop()
-  
+
   push()
   textSize(instruction.text[1].size)
   fill(instruction.text[1].color)
   text(instruction.text[1].text, instruction.text[1].x, instruction.text[1].y)
   tt.push(instruction.text[1])
   pop()
-  
+
   push()
   textSize(instruction.text[2].size)
   fill(instruction.text[2].color)
   text(instruction.text[2].text, instruction.text[2].x, instruction.text[2].y)
   tt.push(instruction.text[2])
   pop()
-  
+
   push()
   textSize(instruction.text[3].size)
   textStyle(ITALIC)
@@ -143,51 +143,51 @@ function part1() {
   }
 }
 
-function part2() {
-  fill(400, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 5 / 14 + 10 * i, height * 1 / 2 + 30 * i, 30)
+  function part2() {
+    fill(400, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 5 / 14 + 10 * i, height * 1 / 2 + 30 * i, 30)
+    }
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 5 / 11 + 3 * i, height * 48 / 100 + 30 * i, 30)
+    }
   }
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 5 / 11 + 3 * i, height * 48 / 100 + 30 * i, 30)
-  }
-}
 
-function part3() {
-  fill(600, 1000, (mouseX / 2.133) + brightness[2] - (mouseY / 1.8))
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 9 / 14 - 10 * i, height * 1 / 2 + 30 * i, 30)
+  function part3() {
+    fill(600, 1000, (mouseX / 2.133) + brightness[2] - (mouseY / 1.8))
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 9 / 14 - 10 * i, height * 1 / 2 + 30 * i, 30)
+    }
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 6 / 11 - 3 * i, height * 48 / 100 + 30 * i, 30)
+    }
   }
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 6 / 11 - 3 * i, height * 48 / 100 + 30 * i, 30)
-  }
-}
 
-function part4() {
-  fill(50, 1000, (mouseX / 2.133) + brightness[3] - (mouseY / 1.8))
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 8 / 9 - 30 * i, height * 2 / 3 + 20 * i, 30)
+  function part4() {
+    fill(50, 1000, (mouseX / 2.133) + brightness[3] - (mouseY / 1.8))
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 8 / 9 - 30 * i, height * 2 / 3 + 20 * i, 30)
+    }
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 7 / 9 - 20 * i, height * 4 / 7 + 25 * i, 30)
+    }
   }
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 7 / 9 - 20 * i, height * 4 / 7 + 25 * i, 30)
-  }
-}
 
-function part5() {
-  fill(0, 0, 600 - (mouseY / 1.8))
-  for (let i = 0; i <= 15; i++) {
-    circle(40 + width / 14 + 33.33 * i * 2, height / 7, 30)
-    circle(40 + width / 14 + 33.33 * i * 2, (height / 7) + 33.33, 30)
+  function part5() {
+    fill(0, 0, 600 - (mouseY / 1.8))
+    for (let i = 0; i <= 15; i++) {
+      circle(40 + width / 14 + 33.33 * i * 2, height / 7, 30)
+      circle(40 + width / 14 + 33.33 * i * 2, (height / 7) + 33.33, 30)
+    }
   }
-}
 
-function part6() {
-  fill(120, 1000, 600 - (mouseY / 1.8))
-  for (let i = 0; i <= 15; i++) {
-    circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5), 30)
-    circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5) + 33.33, 30)
+  function part6() {
+    fill(120, 1000, 600 - (mouseY / 1.8))
+    for (let i = 0; i <= 15; i++) {
+      circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5), 30)
+      circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5) + 33.33, 30)
+    }
   }
-}
 
 function playPauseButton() {
   fill(0, 0, brightness[7])
@@ -217,7 +217,9 @@ function playPauseButton() {
 // }
 
 }
+
 function mousePressed(){
   scene = 1
   music.loop()
 }
+
