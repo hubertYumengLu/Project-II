@@ -23,7 +23,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 720);
+  createCanvas(1280, 720);
   colorMode(HSB, 1000)
   // cnv.mousePressed(startSound);
 }
