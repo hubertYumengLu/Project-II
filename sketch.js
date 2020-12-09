@@ -11,6 +11,7 @@ let cnv
 let parts
 let instruction
 let gif
+let scene = 0
 
 function preload() {
   instruction = loadJSON("assets/jsons/tutorial.json")
@@ -29,7 +30,46 @@ function setup() {
 
 function draw() {
   background(800,1000,330);
+  if (scene == 0){
+    tutorial()
+  }else {
+    start()
+  }
   
+  //load interface if mouse pressed on canvas
+  // Original Canvas Size for Reference (600,400)
+  
+  // cnv.mousePressed(start);
+  // Conjoining all Audio Files (No need any longer? -- Hubert)
+  // masterGain = new p5.Gain()
+  // masterGain.connect()
+  // audio[0].disconnect()
+  // sound1Gain = new p5.Gain()
+  // sound1Gain.setInput(audio[0])
+  // sound1Gain.connect(masterGain)
+  // audio[1].disconnect()
+  // sound2Gain = new p5.Gain()
+  // sound2Gain.setInput(audio[1])
+  // sound2Gain.connect(masterGain)
+  // audio[2].disconnect()
+  // sound3Gain = new p5.Gain()
+  // sound3Gain.setInput(audio[2])
+  // sound3Gain.connect(masterGain)
+  // audio[3].disconnect()
+  // sound4Gain = new p5.Gain()
+  // sound4Gain.setInput(audio[3])
+  // sound4Gain.connect(masterGain)
+  // audio[4].disconnect()
+  // sound5Gain = new p5.Gain()
+  // sound5Gain.setInput(audio[4])
+  // sound5Gain.connect(masterGain)
+  // audio[5].disconnect()
+  // sound6Gain = new p5.Gain()
+  // sound6Gain.setInput(audio[5])
+  // sound6Gain.connect(masterGain)
+}
+
+function tutorial(){
   // load tutorial
   rect(instruction.window[0].x, instruction.window[0].y, instruction.window[0].w, instruction.window[0].h)
   tt.push(instruction.window)
@@ -64,47 +104,17 @@ function draw() {
 
   let scale = 325 / gif.width
   image(gif, 480, 330, gif.width * scale, gif.height * scale)
-
-  //load interface if mouse pressed on canvas
-  // Original Canvas Size for Reference (600,400)
-  
-  colorMode(HSB, 1000)
-  cnv.mousePressed(start);
-  // Conjoining all Audio Files (No need any longer? -- Hubert)
-  // masterGain = new p5.Gain()
-  // masterGain.connect()
-  // audio[0].disconnect()
-  // sound1Gain = new p5.Gain()
-  // sound1Gain.setInput(audio[0])
-  // sound1Gain.connect(masterGain)
-  // audio[1].disconnect()
-  // sound2Gain = new p5.Gain()
-  // sound2Gain.setInput(audio[1])
-  // sound2Gain.connect(masterGain)
-  // audio[2].disconnect()
-  // sound3Gain = new p5.Gain()
-  // sound3Gain.setInput(audio[2])
-  // sound3Gain.connect(masterGain)
-  // audio[3].disconnect()
-  // sound4Gain = new p5.Gain()
-  // sound4Gain.setInput(audio[3])
-  // sound4Gain.connect(masterGain)
-  // audio[4].disconnect()
-  // sound5Gain = new p5.Gain()
-  // sound5Gain.setInput(audio[4])
-  // sound5Gain.connect(masterGain)
-  // audio[5].disconnect()
-  // sound6Gain = new p5.Gain()
-  // sound6Gain.setInput(audio[5])
-  // sound6Gain.connect(masterGain)
 }
 
 function start() {
-  // createCanvas(1200, 720)
   background(800, 1000, 330);
   noStroke()
   fill('white')
-  rect(width / 14, height / 20, width - 200, 20)
+  
+
+  //play bar
+  rect(width / 14, height / 20, width * 12/14, 20)
+  
   playPauseButton()
   part1()
   part2()
@@ -181,9 +191,11 @@ function part6() {
 
 function playPauseButton() {
   fill(0, 0, brightness[7])
-  rect(450, 530, 380, 150)
+  rect(400, 530, 380, 150)
   fill(120, 1000, brightness[7])
 }
+
+
 
 // Sound Calls (Start and Stop)
 // function startSound() {
@@ -204,4 +216,8 @@ function playPauseButton() {
 //   audio[5].pause();
 // }
 
+}
+function mousePressed(){
+  scene = 1
+  music.loop()
 }
