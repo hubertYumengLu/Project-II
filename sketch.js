@@ -115,7 +115,7 @@ function start() {
   //play bar
   rect(width / 14, height / 20, width * 12/14, 20)
   
-  playPauseButton()
+  podium()
   part1()
   part2()
   part3()
@@ -189,9 +189,9 @@ function part1() {
     }
   }
 
-function playPauseButton() {
+function podium() {
   fill(0, 0, brightness[7])
-  rect(400, 530, 380, 150)
+  rect(440, 530, 380, 150)
   fill(120, 1000, brightness[7])
 }
 
