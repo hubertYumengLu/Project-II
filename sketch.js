@@ -1,6 +1,6 @@
 let i = 1
 //judgment on whether to play or pause audio
-let brightness = [200, 200, 200, 200, 200, 200, 1000]
+let brightness = [200, 200, 200, 200, 200, 200]
 //first six values are brightness of circles; last value is brightness of playPauseButton
 let tt = []
 let audio = []
@@ -12,6 +12,8 @@ let parts
 let instruction
 let gif
 let scene = 0
+let cam
+let leftWristX, leftWristY, rightWristX, rightWristY
 
 function preload() {
   instruction = loadJSON("assets/jsons/tutorial.json")
@@ -20,11 +22,15 @@ function preload() {
   music = loadSound("assets/sounds/Guillaume Tell.mp3")
   console.info(music)
   audio.push(music)
+
+  poseNet = ml5.poseNet(video, modelReady)
+  poseNet.on('pose', gotPoses)
 }
 
 function setup() {
-  createCanvas(1280, 720);
+  createCanvas(1280, 720)
   colorMode(HSB, 1000)
+  cam = createCapture(VIDEO)
   // cnv.mousePressed(startSound);
 }
 
@@ -110,7 +116,12 @@ function start() {
   background(800, 1000, 330);
   noStroke()
   fill('white')
-  
+
+  push()
+  fill('#CCCCCC')
+  circle(leftWristX,leftWristY, 20)
+  circle(rightWristX, rightWristY, 20)
+  pop()
 
   //play bar
   rect(width / 14, height / 20, width * 12/14, 20)
@@ -190,33 +201,24 @@ function part1() {
   }
 
 function podium() {
-  fill(0, 0, brightness[7])
-  rect(440, 530, 380, 150)
-  fill(120, 1000, brightness[7])
+  let scale = 200 / cam.width
+  image(cam, 480, 330, cam.width * scale, cam.height * scale)
 }
 
-
-
-// Sound Calls (Start and Stop)
-// function startSound() {
-//   audio[0].loop();
-//   audio[1].loop();
-//   audio[2].loop();
-//   audio[3].loop();
-//   audio[4].loop();
-//   audio[5].loop();
-//   loop();
-// }
-// function mouseReleased() {
-//   audio[0].pause();
-//   audio[1].pause();
-//   audio[2].pause();
-//   audio[3].pause();
-//   audio[4].pause();
-//   audio[5].pause();
-// }
-
 }
+
+function modelready(){
+  console.log('Model Ready!')
+}
+
+function gotPoses(){
+  console.log(poses)
+  leftWristX = poses[0].pose.keypoints[9].position.x
+  leftWristY = poses[0].pose.keypoints[9].position.y
+  rightWristX = poses[0].pose.keypoints[10].position.x
+  rightWristY = poses[0].pose.keypoints[10].position.y
+}
+
 
 function mousePressed(){
   scene = 1
