@@ -12,10 +12,10 @@ let cnv
 let parts
 let instruction
 let gif
-let scene = 1
+let scene = 0
 let cam
 let poseNet
-let leftWristX, leftWristY, rightWristX, rightWristY
+let leftWristX, leftWristY, rightWristX, rightWristY, leftCircleX, leftCircleY, rightCircleX, rightCircleY
 
 function preload() {
   instruction = loadJSON("assets/jsons/tutorial.json")
@@ -23,16 +23,14 @@ function preload() {
   soundFormats("mp3")
   music = loadSound("assets/sounds/Guillaume Tell.mp3")
   // console.info(music)
-  console.info('preload 1')
   audio.push(music)
 
 }
 
 function setup() {
-  console.info('setup')
   createCanvas(1280, 720)
   cam = createCapture(VIDEO)
-  poseNet = ml5.poseNet(cam, modelReady)
+  poseNet = ml5.poseNet(cam, { flipHorizontal: true }, modelReady)
   poseNet.on('pose', gotPoses)
   colorMode(HSB, 1000)
   // cnv.mousePressed(startSound);
@@ -108,12 +106,6 @@ function start() {
   noStroke()
   fill('white')
 
-  push()
-  fill('#CCCCCC')
-  circle(leftWristX, leftWristY, 20)
-  circle(rightWristX, rightWristY, 20)
-  pop()
-
   //play bar
   rect(width / 14, height / 20, width * 12 / 14, 20)
 
@@ -133,6 +125,12 @@ function start() {
   // sound4Gain.amp(sound2Volume);
   // let masterVolume = constrain(map(mouseY, height, 0, 0, 1), 0, 1);
   // masterGain.amp(masterVolume);
+
+  push()
+  fill('#CCCCCC')
+  circle(leftCircleX, leftCircleY, 30)
+  circle(rightCircleX, rightCircleY, 30)
+  pop()
 
 
   function part1() {
@@ -192,8 +190,24 @@ function start() {
   }
 
   function podium() {
-    let scale = 250 / cam.width
-    image(cam, 510, 530, cam.width * scale, cam.height * scale)
+    let newSize = 250 / cam.width
+
+    push()
+    translate(510, 530)
+    translate(cam.width * newSize, 0);
+    scale(-1, 1)
+    image(cam, 0, 0, cam.width * newSize, cam.height * newSize)
+    pop()
+
+    push()
+    fill('red')
+    leftCircleX = map(leftWristX, 0, cam.width, 510, 510 + cam.width * newSize)
+    leftCircleY = map(leftWristY, 0, cam.height, 530, 530 + cam.height * newSize)
+    rightCircleX = map(rightWristX, 0, cam.width, 510, 510 + cam.width * newSize)
+    rightCircleY = map(rightWristY, 0, cam.height, 530, 530 + cam.height * newSize)
+    circle(510 + cam.width * newSize / 3, 530 + cam.height * newSize * 3 / 5, 15)
+    circle(510 + cam.width * newSize * 2 / 3, 530 + cam.height * newSize * 3 / 5, 15)
+    pop()
   }
 
 }
@@ -213,9 +227,13 @@ function gotPoses(pose) {
 
 function mousePressed() {
   scene = 1
-  music.loop()
 }
 
 function keyPressed() {
-  music.pause()
+
+  if (music.isPlaying() == true) {
+    music.pause()
+  } else {
+    music.play()
+  }
 }
