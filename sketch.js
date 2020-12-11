@@ -11,8 +11,9 @@ let cnv
 let parts
 let instruction
 let gif
-let scene = 0
+let scene = 1
 let cam
+let poseNet
 let leftWristX, leftWristY, rightWristX, rightWristY
 
 function preload() {
@@ -20,17 +21,20 @@ function preload() {
   gif = loadImage("assets/images/handMovement.gif")
   soundFormats("mp3")
   music = loadSound("assets/sounds/Guillaume Tell.mp3")
-  console.info(music)
+  // console.info(music)
+  console.info('preload 1')
   audio.push(music)
-
-  poseNet = ml5.poseNet(video, modelReady)
+  poseNet = ml5.poseNet(cam, modelReady)
   poseNet.on('pose', gotPoses)
+  console.info('preload 2')
 }
 
 function setup() {
+  console.info('setup')
   createCanvas(1280, 720)
-  colorMode(HSB, 1000)
   cam = createCapture(VIDEO)
+  console.info('cam', cam)
+  colorMode(HSB, 1000)
   // cnv.mousePressed(startSound);
 }
 
@@ -41,38 +45,6 @@ function draw() {
   }else {
     start()
   }
-  
-  //load interface if mouse pressed on canvas
-  // Original Canvas Size for Reference (600,400)
-  
-  // cnv.mousePressed(start);
-  // Conjoining all Audio Files (No need any longer? -- Hubert)
-  // masterGain = new p5.Gain()
-  // masterGain.connect()
-  // audio[0].disconnect()
-  // sound1Gain = new p5.Gain()
-  // sound1Gain.setInput(audio[0])
-  // sound1Gain.connect(masterGain)
-  // audio[1].disconnect()
-  // sound2Gain = new p5.Gain()
-  // sound2Gain.setInput(audio[1])
-  // sound2Gain.connect(masterGain)
-  // audio[2].disconnect()
-  // sound3Gain = new p5.Gain()
-  // sound3Gain.setInput(audio[2])
-  // sound3Gain.connect(masterGain)
-  // audio[3].disconnect()
-  // sound4Gain = new p5.Gain()
-  // sound4Gain.setInput(audio[3])
-  // sound4Gain.connect(masterGain)
-  // audio[4].disconnect()
-  // sound5Gain = new p5.Gain()
-  // sound5Gain.setInput(audio[4])
-  // sound5Gain.connect(masterGain)
-  // audio[5].disconnect()
-  // sound6Gain = new p5.Gain()
-  // sound6Gain.setInput(audio[5])
-  // sound6Gain.connect(masterGain)
 }
 
 function tutorial(){
@@ -201,17 +173,17 @@ function part1() {
   }
 
 function podium() {
-  let scale = 200 / cam.width
-  image(cam, 480, 330, cam.width * scale, cam.height * scale)
+  let scale = 250 / cam.width
+  image(cam, 510, 530, cam.width * scale, cam.height * scale)
 }
 
 }
 
-function modelready(){
+function modelReady(){
   console.log('Model Ready!')
 }
 
-function gotPoses(){
+function gotPoses(poses){
   console.log(poses)
   leftWristX = poses[0].pose.keypoints[9].position.x
   leftWristY = poses[0].pose.keypoints[9].position.y
@@ -223,5 +195,9 @@ function gotPoses(){
 function mousePressed(){
   scene = 1
   music.loop()
+}
+
+function keyPressed(){
+  music.pause()
 }
 
