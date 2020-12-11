@@ -24,16 +24,15 @@ function preload() {
   // console.info(music)
   console.info('preload 1')
   audio.push(music)
-  poseNet = ml5.poseNet(cam, modelReady)
-  poseNet.on('pose', gotPoses)
-  console.info('preload 2')
+  
 }
 
 function setup() {
   console.info('setup')
   createCanvas(1280, 720)
   cam = createCapture(VIDEO)
-  console.info('cam', cam)
+  poseNet = ml5.poseNet(cam, modelReady)
+  poseNet.on('pose', gotPoses)
   colorMode(HSB, 1000)
   // cnv.mousePressed(startSound);
 }
@@ -183,12 +182,12 @@ function modelReady(){
   console.log('Model Ready!')
 }
 
-function gotPoses(poses){
-  console.log(poses)
-  leftWristX = poses[0].pose.keypoints[9].position.x
-  leftWristY = poses[0].pose.keypoints[9].position.y
-  rightWristX = poses[0].pose.keypoints[10].position.x
-  rightWristY = poses[0].pose.keypoints[10].position.y
+function gotPoses(pose){
+  console.log(pose)
+  leftWristX = pose[0].pose.keypoints[9].position.x
+  leftWristY = pose[0].pose.keypoints[9].position.y
+  rightWristX = pose[0].pose.keypoints[10].position.x
+  rightWristY = pose[0].pose.keypoints[10].position.y
 }
 
 
