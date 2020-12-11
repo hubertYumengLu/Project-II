@@ -41,7 +41,7 @@ function move() {
     s = 1
     let elem = document.getElementById("myBar")
     let width = 1
-    let id = setInterval(frame, 10)
+    let id = setInterval(frame, 1910)
     function frame() {
       if (width >= 100) {
         clearInterval(id)
@@ -227,6 +227,7 @@ function gotPoses(pose) {
 
 function mousePressed() {
   scene = 1
+  move()
 }
 
 function keyPressed() {
