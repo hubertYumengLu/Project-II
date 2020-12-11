@@ -1,4 +1,5 @@
 let i = 1
+let s = 0
 //judgment on whether to play or pause audio
 let brightness = [200, 200, 200, 200, 200, 200]
 //first six values are brightness of circles; last value is brightness of playPauseButton
@@ -24,7 +25,7 @@ function preload() {
   // console.info(music)
   console.info('preload 1')
   audio.push(music)
-  
+
 }
 
 function setup() {
@@ -37,16 +38,35 @@ function setup() {
   // cnv.mousePressed(startSound);
 }
 
+function move() {
+  if (s == 0) {
+    s = 1
+    let elem = document.getElementById("myBar")
+    let width = 1
+    let id = setInterval(frame, 10)
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id)
+        s = 0
+      } else {
+        width++
+        elem.style.width = width + "%"
+      }
+    }
+  }
+}
+
+
 function draw() {
-  background(800,1000,330);
-  if (scene == 0){
+  background(800, 1000, 330);
+  if (scene == 0) {
     tutorial()
-  }else {
+  } else {
     start()
   }
 }
 
-function tutorial(){
+function tutorial() {
   // load tutorial
   rect(instruction.window[0].x, instruction.window[0].y, instruction.window[0].w, instruction.window[0].h)
   tt.push(instruction.window)
@@ -90,13 +110,13 @@ function start() {
 
   push()
   fill('#CCCCCC')
-  circle(leftWristX,leftWristY, 20)
+  circle(leftWristX, leftWristY, 20)
   circle(rightWristX, rightWristY, 20)
   pop()
 
   //play bar
-  rect(width / 14, height / 20, width * 12/14, 20)
-  
+  rect(width / 14, height / 20, width * 12 / 14, 20)
+
   podium()
   part1()
   part2()
@@ -115,15 +135,15 @@ function start() {
   // masterGain.amp(masterVolume);
 
 
-function part1() {
-  fill(200, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 1 / 9 + 30 * i, height * 2 / 3 + 20 * i, 30)
+  function part1() {
+    fill(200, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 1 / 9 + 30 * i, height * 2 / 3 + 20 * i, 30)
+    }
+    for (let i = 0; i <= 4; i++) {
+      circle(width * 2 / 9 + 20 * i, height * 4 / 7 + 25 * i, 30)
+    }
   }
-  for (let i = 0; i <= 4; i++) {
-    circle(width * 2 / 9 + 20 * i, height * 4 / 7 + 25 * i, 30)
-  }
-}
 
   function part2() {
     fill(400, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
@@ -171,18 +191,18 @@ function part1() {
     }
   }
 
-function podium() {
-  let scale = 250 / cam.width
-  image(cam, 510, 530, cam.width * scale, cam.height * scale)
-}
+  function podium() {
+    let scale = 250 / cam.width
+    image(cam, 510, 530, cam.width * scale, cam.height * scale)
+  }
 
 }
 
-function modelReady(){
+function modelReady() {
   console.log('Model Ready!')
 }
 
-function gotPoses(pose){
+function gotPoses(pose) {
   console.log(pose)
   leftWristX = pose[0].pose.keypoints[9].position.x
   leftWristY = pose[0].pose.keypoints[9].position.y
@@ -191,12 +211,11 @@ function gotPoses(pose){
 }
 
 
-function mousePressed(){
+function mousePressed() {
   scene = 1
   music.loop()
 }
 
-function keyPressed(){
+function keyPressed() {
   music.pause()
 }
-
