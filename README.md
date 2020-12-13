@@ -4,7 +4,7 @@ Description: Become the conductor of Guillaume Tell Overture! In this demo game 
 
 Usage: Read tutorial, then press mouse on canvas to play audio and begin conducting with your hands; wave your left and right hands to change the master volume and volume of each section. Become the conductor!
 
-![](https://github.com/hubertYumengLu/Project-II/assets/screenshots/Game2.png)
+![](https://github.com/hubertYumengLu/Project-II/blob/master/assets/screenshots/Game2.png)
 
 Authors: Hubert Yumeng Lu, Jarah Romero
 
