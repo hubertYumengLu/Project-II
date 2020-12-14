@@ -106,9 +106,6 @@ function start() {
   noStroke()
   fill('white')
 
-  //play bar
-  rect(width / 14, height / 20, width * 12 / 14, 20)
-
   podium()
   part1()
   part2()
