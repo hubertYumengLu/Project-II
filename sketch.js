@@ -97,6 +97,14 @@ function tutorial() {
   tt.push(instruction.text[3])
   pop()
 
+  push()
+  textSize(instruction.text[4].size)
+  textStyle(ITALIC)
+  fill(instruction.text[4].color)
+  text(instruction.text[4].text, instruction.text[4].x, instruction.text[4].y)
+  tt.push(instruction.text[4])
+  pop()
+
   let scale = 325 / gif.width
   image(gif, 480, 330, gif.width * scale, gif.height * scale)
 }
@@ -114,9 +122,9 @@ function start() {
   part5()
   part6()
   // Volume by Mouse Mechanics
-  let sound1Volume = constrain(map(mouseX, width, 0, 0, 1), 0, 1);
+  // let sound1Volume = constrain(map(mouseX, width, 0, 0, 1), 0, 1);
   // let sound2Volume = 1 - sound1Volume;
-  audio[0].amp(sound1Volume);
+  // audio[0].amp(sound1Volume);
   // sound2Gain.amp(sound1Volume);
   // sound3Gain.amp(sound2Volume);
   // sound4Gain.amp(sound2Volume);
@@ -131,7 +139,7 @@ function start() {
 
 
   function part1() {
-    fill(200, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
+    fill(200, 1000, 800 - leftWristX - leftWristY)
     for (let i = 0; i <= 4; i++) {
       circle(width * 1 / 9 + 30 * i, height * 2 / 3 + 20 * i, 30)
     }
@@ -141,7 +149,7 @@ function start() {
   }
 
   function part2() {
-    fill(400, 1000, 800 - (mouseX / 2.133) - (mouseY / 1.8))
+    fill(400, 1000, 800 - leftWristX - leftWristY)
     for (let i = 0; i <= 4; i++) {
       circle(width * 5 / 14 + 10 * i, height * 1 / 2 + 30 * i, 30)
     }
@@ -151,7 +159,7 @@ function start() {
   }
 
   function part3() {
-    fill(600, 1000, (mouseX / 2.133) + brightness[2] - (mouseY / 1.8))
+    fill(600, 1000, (rightWristX) + 100 - (rightWristY))
     for (let i = 0; i <= 4; i++) {
       circle(width * 9 / 14 - 10 * i, height * 1 / 2 + 30 * i, 30)
     }
@@ -161,7 +169,7 @@ function start() {
   }
 
   function part4() {
-    fill(50, 1000, (mouseX / 2.133) + brightness[3] - (mouseY / 1.8))
+    fill(50, 1000, (rightWristX) + 100 - (rightWristY))
     for (let i = 0; i <= 4; i++) {
       circle(width * 8 / 9 - 30 * i, height * 2 / 3 + 20 * i, 30)
     }
@@ -171,7 +179,7 @@ function start() {
   }
 
   function part5() {
-    fill(0, 0, 600 - (mouseY / 1.8))
+    fill(0, 0, 600 - ((leftWristY + rightWristY) - 300))
     for (let i = 0; i <= 15; i++) {
       circle(40 + width / 14 + 33.33 * i * 2, height / 7, 30)
       circle(40 + width / 14 + 33.33 * i * 2, (height / 7) + 33.33, 30)
@@ -179,7 +187,7 @@ function start() {
   }
 
   function part6() {
-    fill(120, 1000, 600 - (mouseY / 1.8))
+    fill(120, 1000, 600 - ((leftWristY + rightWristY) - 300))
     for (let i = 0; i <= 15; i++) {
       circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5), 30)
       circle(40 + width / 14 + 33.33 * i * 2, (height / 3.5) + 33.33, 30)
@@ -197,13 +205,15 @@ function start() {
     pop()
 
     push()
-    fill('red')
+    fill('yellow')
     leftCircleX = map(leftWristX, 0, cam.width, 510, 510 + cam.width * newSize)
     leftCircleY = map(leftWristY, 0, cam.height, 530, 530 + cam.height * newSize)
     rightCircleX = map(rightWristX, 0, cam.width, 510, 510 + cam.width * newSize)
     rightCircleY = map(rightWristY, 0, cam.height, 530, 530 + cam.height * newSize)
     circle(510 + cam.width * newSize / 3, 530 + cam.height * newSize * 3 / 5, 15)
     circle(510 + cam.width * newSize * 2 / 3, 530 + cam.height * newSize * 3 / 5, 15)
+    let sound1Volume = constrain(map((leftWristY) + (rightWristY), height, 0, 0, 1), 0, 1);
+    audio[0].amp((sound1Volume))
     pop()
   }
 
@@ -225,10 +235,6 @@ function gotPoses(pose) {
 function mousePressed() {
   scene = 1
   move()
-}
-
-function keyPressed() {
-
   if (music.isPlaying() == true) {
     music.pause()
   } else {

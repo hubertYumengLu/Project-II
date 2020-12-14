@@ -5,7 +5,7 @@
       "y": 250
     }
   ],
-  "window":[
+  "window": [
     {
       "x": 256,
       "y": 144,
@@ -13,7 +13,7 @@
       "h": 432
     }
   ],
-  "text":[
+  "text": [
     {
       "size": 50,
       "color": "#F28327",
@@ -31,16 +31,23 @@
     {
       "size": 25,
       "color": 0,
-      "text": "Enjoy directing Guillaume Tell Overture!",
+      "text": "♫ Enjoy directing Guillaume Tell Overture! ♫",
       "x": 420,
       "y": 285
     },
     {
       "size": 15,
       "color": 50,
-      "text": "*Click anywhere to continue",
+      "text": "*Please wait for the camera to load*",
       "x": 550,
       "y": 305
+    },
+    {
+      "size": 15,
+      "color": 50,
+      "text": "*Then click anywhere to continue*",
+      "x": 550,
+      "y": 325
     }
   ]
 }
